@@ -1,4 +1,9 @@
 [phases.setup]
-npm = true
-php = "8.4"
+  phpVersion = "8.4"
+  npm = true
+[nixpacks]
+  providers = ["php"]
+
+[phases.build]
+  cmds = ["composer install --no-dev --optimize-autoloader --no-interaction", "npm ci --only=production", "npm run build"]
 
