@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     nginx \
     supervisor \
+    nodejs \
+    npm \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
