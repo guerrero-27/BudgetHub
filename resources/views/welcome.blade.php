@@ -87,7 +87,7 @@
                         </div>
 
                         <span class="text-base sm:text-xl font-bold text-gray-900 truncate">
-                            ExpenseTracker
+                            BudgetHub
                         </span>
 
                     </a>
