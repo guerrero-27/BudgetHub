@@ -3,6 +3,7 @@
   npm = true
 [nixpacks]
   providers = ["php"]
+  dockerfile = "Dockerfile"
 
 [phases.build]
   cmds = ["composer install --no-dev --optimize-autoloader --no-interaction", "npm ci --only=production", "npm run build"]
