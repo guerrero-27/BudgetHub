@@ -1,0 +1,4 @@
+[phases.setup]
+npm = true
+php = "8.4"
+
