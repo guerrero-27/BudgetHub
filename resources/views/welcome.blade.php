@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Track Your Finances Effortlessly - Manage your expenses, budgets, and financial goals with our intuitive expense tracking application.">
 
-    <title>{{ config('app.name', 'ExpenseTracker') }} - Track Your Finances Effortlessly</title>
+    <title>{{ config('app.name', 'BudgetHub') }} - Track Your Finances Effortlessly</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -218,187 +218,198 @@
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center pt-20 bg-pattern overflow-hidden">
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
 
-<div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
-<!-- LEFT CONTENT -->
-<div class="text-center lg:text-left">
+            <!-- LEFT CONTENT -->
+            <div class="text-center lg:text-left">
 
-<span class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-6">
-✨ Smart Financial Management
-</span>
+                <span class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-6">
+                ✨ Smart Financial Management
+                </span>
 
-<h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                <h1 class="text-3xl sm:text-7xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                Track Your Finances
+                <span class="text-indigo-600">Effortlessly</span>
+                </h1>
 
-Track Your Finances  
-<span class="text-indigo-600">Effortlessly</span>
+                <p class="text-base sm:text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                Take control of your money with our intuitive expense tracking application.
+                Monitor income, expenses, and budgets all in one place.
+                </p>
 
-</h1>
+                <!-- BUTTONS -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 
-<p class="text-base sm:text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                    @auth
+                        <a href="{{ url('/dashboard') }}"
+                        class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition">
+                        Go to Dashboard
+                        </a>
+                    @else
+                        <a href="{{ route('register') }}"
+                        class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition">
+                        Get Started
+                        </a>
 
-Take control of your money with our intuitive expense tracking application. Monitor income, expenses, and budgets all in one place.
+                        <a href="{{ route('login') }}"
+                        class="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-black transition">
+                        Sign In
+                        </a>
+                    @endauth
 
-</p>
+                </div>
 
-<!-- BUTTONS -->
-<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <!-- STATS -->
+                <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6">
 
-@auth
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-bold text-indigo-600">10K+</p>
+                    <p class="text-sm text-gray-500">Active Users</p>
+                </div>
 
-<a href="{{ url('/dashboard') }}"
-class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition">
-Go to Dashboard
-</a>
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-bold text-indigo-600">$2M+</p>
+                    <p class="text-sm text-gray-500">Tracked</p>
+                </div>
 
-@else
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-bold text-indigo-600">4.9</p>
+                    <p class="text-sm text-gray-500">Rating</p>
+                </div>
 
-<a href="{{ route('register') }}"
-class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition">
-Get Started Free
-</a>
+                </div>
 
-<a href="{{ route('login') }}"
-class="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-black transition">
-Sign In
-</a>
+            </div>
 
-@endauth
 
-</div>
+            <!-- RIGHT CARD -->
+            <div class="relative">
 
-<!-- STATS -->
-<div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6">
+                <div class="bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-3xl p-5 md:p-8 shadow-2xl">
 
-<div class="text-center">
-<p class="text-2xl md:text-3xl font-bold text-indigo-600">10K+</p>
-<p class="text-sm text-gray-500">Active Users</p>
-</div>
+                <div class="bg-white rounded-2xl p-5 md:p-6 shadow-xl">
 
-<div class="text-center">
-<p class="text-2xl md:text-3xl font-bold text-indigo-600">$2M+</p>
-<p class="text-sm text-gray-500">Tracked</p>
-</div>
+                    <!-- BALANCE -->
+                    <div class="flex items-center justify-between mb-6">
 
-<div class="text-center">
-<p class="text-2xl md:text-3xl font-bold text-indigo-600">4.9</p>
-<p class="text-sm text-gray-500">Rating</p>
-</div>
+                    <div>
+                        <p class="text-sm text-gray-500">Total Balance</p>
+                        <p class="text-2xl md:text-3xl font-bold text-gray-900">$12,450.00</p>
+                    </div>
 
-</div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-xl flex items-center justify-center">
 
-</div>
+                        <svg class="w-5 h-5 md:w-6 md:h-6 text-green-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24">
 
+                        <path stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
 
-<!-- RIGHT CARD -->
-<div class="relative">
+                        </svg>
 
-<div class="bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-3xl p-5 md:p-8 shadow-2xl">
+                    </div>
 
-<div class="bg-white rounded-2xl p-5 md:p-6 shadow-xl">
+                    </div>
 
-<div class="flex items-center justify-between mb-6">
 
-<div>
-<p class="text-sm text-gray-500">Total Balance</p>
-<p class="text-2xl md:text-3xl font-bold text-gray-900">$12,450.00</p>
-</div>
+                    <!-- MINI CHART -->
+                    <div class="flex items-end gap-1 md:gap-2 h-20 md:h-24 mb-4">
+                    <div class="flex-1 bg-indigo-200 rounded-t-lg h-[40%]"></div>
+                    <div class="flex-1 bg-indigo-300 rounded-t-lg h-[60%]"></div>
+                    <div class="flex-1 bg-indigo-400 rounded-t-lg h-[45%]"></div>
+                    <div class="flex-1 bg-indigo-500 rounded-t-lg h-[75%]"></div>
+                    <div class="flex-1 bg-indigo-600 rounded-t-lg h-[55%]"></div>
+                    <div class="flex-1 bg-indigo-700 rounded-t-lg h-[85%]"></div>
+                    </div>
 
-<div class="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-xl flex items-center justify-center">
 
-<svg class="w-5 h-5 md:w-6 md:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- TRANSACTIONS -->
+                    <div class="space-y-3">
 
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    <!-- Shopping -->
+                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
 
-</svg>
+                        <div class="flex items-center gap-3">
 
-</div>
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-orange-100 rounded-full flex items-center justify-center">
 
-</div>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-orange-600"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
 
+                            <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
 
-<!-- MINI CHART -->
-<div class="flex items-end gap-1 md:gap-2 h-20 md:h-24 mb-4">
+                            </svg>
 
-<div class="flex-1 bg-indigo-200 rounded-t-lg h-[40%]"></div>
-<div class="flex-1 bg-indigo-300 rounded-t-lg h-[60%]"></div>
-<div class="flex-1 bg-indigo-400 rounded-t-lg h-[45%]"></div>
-<div class="flex-1 bg-indigo-500 rounded-t-lg h-[75%]"></div>
-<div class="flex-1 bg-indigo-600 rounded-t-lg h-[55%]"></div>
-<div class="flex-1 bg-indigo-700 rounded-t-lg h-[85%]"></div>
+                        </div>
 
-</div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm md:text-base">Shopping</p>
+                            <p class="text-xs text-gray-500">Today</p>
+                        </div>
 
+                        </div>
 
-<!-- TRANSACTIONS -->
-<div class="space-y-3">
+                        <span class="font-semibold text-red-600 text-sm md:text-base">-$125</span>
 
-<div class="flex items-center justify-between py-2 border-b border-gray-100">
+                    </div>
 
-<div class="flex items-center gap-3">
 
-<div class="w-8 h-8 md:w-10 md:h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                    <!-- Salary -->
+                    <div class="flex items-center justify-between py-2">
 
-<svg class="w-4 h-4 md:w-5 md:h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-center gap-3">
 
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center">
 
-</svg>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-600"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
 
-</div>
+                            <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2" />
 
-<div>
-<p class="font-medium text-gray-900 text-sm md:text-base">Shopping</p>
-<p class="text-xs text-gray-500">Today</p>
-</div>
+                            </svg>
 
-</div>
+                        </div>
 
-<span class="font-semibold text-red-600 text-sm md:text-base">-$125</span>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm md:text-base">Salary</p>
+                            <p class="text-xs text-gray-500">Yesterday</p>
+                        </div>
 
-</div>
+                        </div>
 
+                        <span class="font-semibold text-green-600 text-sm md:text-base">+$3500</span>
 
-<div class="flex items-center justify-between py-2">
+                    </div>
 
-<div class="flex items-center gap-3">
+                    </div>
 
-<div class="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center">
+                </div>
 
-<svg class="w-4 h-4 md:w-5 md:h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </div>
 
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2"/>
+            </div>
 
-</svg>
+            </div>
 
-</div>
+        </div>
 
-<div>
-<p class="font-medium text-gray-900 text-sm md:text-base">Salary</p>
-<p class="text-xs text-gray-500">Yesterday</p>
-</div>
-
-</div>
-
-<span class="font-semibold text-green-600 text-sm md:text-base">+$3500</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+        </section>
 
     <!-- Features Section -->
     <section id="features" class="py-20 bg-gray-50 overflow-x-hidden">
@@ -667,7 +678,7 @@ d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2"/>
                         <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <span class="text-xl font-bold text-white">ExpenseTracker</span>
+                        <span class="text-xl font-bold text-white">BudgetHub</span>
                     </div>
                     <p class="text-gray-400">Track your finances effortlessly and make smarter money decisions.</p>
                 </div>
@@ -692,12 +703,12 @@ d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2"/>
                     <ul class="space-y-3">
                         <li class="flex items-center gap-2">
                             <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            <span>support@expensetracker.com</span>
+                            <span>support@BudgetHub.com</span>
                         </li>
                     </ul>
                 </div>
             <div class="pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">&copy; {{ date('Y') }} ExpenseTracker. All rights reserved.</p>
+                <p class="text-gray-400 text-sm">&copy; {{ date('Y') }} BudgetHub. All rights reserved.</p>
             </div>
         </div>
     </div>
