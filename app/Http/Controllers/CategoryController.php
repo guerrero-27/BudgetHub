@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -31,7 +32,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:categories,name,NULL,id,' . Auth::id() . ',user_id'],
+            'name' => ['required', 'string', 'max:255', Rule::unique('categories')->where(fn ($query) => $query->where('user_id', Auth::id()))],
             'color' => 'required|string|max:255',
         ]);
 
