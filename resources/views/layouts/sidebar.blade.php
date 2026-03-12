@@ -35,7 +35,7 @@
     <div x-show="!isMobile || !sidebarCollapsed" x-transition.opacity class="flex flex-col h-full">
         <!-- Logo/Brand -->
         <div class="text-center mb-4">
-            <h1 class="text-2xl font-bold text-black">Expenses</h1>
+            <h1 class="text-2xl font-bold text-black">BudgetHub</h1>
             <p class="text-gray-400 text-sm">Tracking App</p>
         </div>
 
