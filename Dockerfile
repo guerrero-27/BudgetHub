@@ -39,8 +39,12 @@ RUN npm run build
 COPY docker/nginx.conf /etc/nginx/sites-available/default
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Generate app key
-RUN php artisan key:generate --no-interaction
+# Set APP_KEY from Railway environment variable (set in Railway dashboard)
+ENV APP_KEY base64:i1TtSKBuTTOUVzZjsW8EDQId9N9wR1EKZIBk7tOEbnM=
+
+# Copy .env.example as .env (Railway will override with its variables)
+COPY .env.example .env
+RUN cp .env.example .env
 
 EXPOSE 80
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
