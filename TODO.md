@@ -1,57 +1,12 @@
-# Welcome Page Redesign - TODO
+# Fix Mixed Content (HTTPS Assets) - Approved Plan Steps
 
-## Task: Design a modern, responsive welcome page for the finance tracking web application
+## Pending Steps:
 
-### Color Scheme: Indigo (#4F46E5), White, Black
+- [x]   1. Edit vite.config.js to add HTTPS-compatible server/build config
+- [x]   2. Execute `npm run build` to regenerate assets
+- [x]   3. Verify new public/build/manifest.json references correct CSS/JS files (app-C5KnUXPr.css generated)
+- [x]   4. Confirm no HTTP URLs in generated assets (search_files found 0 matches)
+- [ ]   5. Test deployment on Railway - no mixed content warnings
+- [ ]   6. attempt_completion with results
 
----
-
-## Implementation Steps:
-
-- [x]   1. Analyze project structure and existing welcome page
-- [x]   2. Create modern welcome page with all sections
-- [ ]   3. Test the page renders correctly
-
----
-
-## Sections Implemented:
-
-1. **Hero Section** ✅
-    - Bold headline: "Track Your Finances Effortlessly"
-    - Subheadline describing the app
-    - Animated CTA buttons: "Get Started" and "Sign In"
-    - Fade-in/slide animations
-
-2. **Features / Pages Section** ✅
-    - Dashboard card
-    - Expenses card
-    - Categories card
-    - Reports/Analytics card
-    - Budgets card
-    - Profile/Settings card
-    - Hover animations (scale-up, shadow, color highlights)
-
-3. **About Section** ✅
-    - Short text about app's purpose
-    - Feature highlights with icons
-
-4. **CTA Section** ✅
-    - Sign up call-to-action
-    - Indigo gradient button
-
-5. **Footer** ✅
-    - Page links
-    - Social media links
-    - Contact info
-    - Hover animations
-
----
-
-## Design Requirements Met:
-
-- Clean, modern fonts (Figtree)
-- High contrast: white background, black text, indigo accents
-- Consistent spacing and rounded corners
-- Smooth scroll transitions
-- Fade-in, slide-in, hover effects
-- Background subtle animations (floating shapes, gradient backgrounds)
+**Status:** Ready for step 1
