@@ -3,7 +3,7 @@
 @section('title', 'Add Expense')
 
 @section('content')
-<div class="p-6 max-w-2xl mx-auto">
+<div class="p-6 max-w-4xl mx-auto">
     <div class="mb-6">
         <a href="{{ route('expenses.index') }}" class="inline-flex items-center text-gray-600 hover:text-gray-900">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
