@@ -1,12 +1,16 @@
-# Fix Mixed Content (HTTPS Assets) - Approved Plan Steps
+# Fix 500 Error on Expenses Create (Railway Deployment)
 
-## Pending Steps:
+## Steps:
 
-- [x]   1. Edit vite.config.js to add HTTPS-compatible server/build config
-- [x]   2. Execute `npm run build` to regenerate assets
-- [x]   3. Verify new public/build/manifest.json references correct CSS/JS files (app-C5KnUXPr.css generated)
-- [x]   4. Confirm no HTTP URLs in generated assets (search_files found 0 matches)
-- [ ]   5. Test deployment on Railway - no mixed content warnings
-- [ ]   6. attempt_completion with results
+1. ~~Create TODO.md with step list~~ (DONE)
+2. ~~Create missing migration: `database/migrations/2026_03_12_000000_create_categories_table.php`~~ (DONE)
+3. ~~Create missing migration: `database/migrations/2026_03_12_000001_add_category_id_to_expenses_table.php`~~ (DONE)
+4. ~~Update `app/Models/Category.php` (add user_id fillable, user relation)~~ (DONE)
+5. ~~Update `app/Http/Controllers/CategoryController.php` (scope to user_id)~~ (DONE)
+6. ~~Update `app/Models/Expense.php` (confirm fields/relations)~~ (NO CHANGE NEEDED)
+7. ~~Update `app/Http/Controllers/ExpenseController.php` (scope categories to user, safe Category::find)~~ (DONE)
+8. Test locally: `php artisan migrate:fresh`, create category/expense
+9. Commit and push for Railway redeploy (migrations will run)
+10. Verify on Railway after deploy
 
-**Status:** Ready for step 1
+**Next step: 4/10**

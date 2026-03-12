@@ -43,7 +43,7 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::where('user_id', Auth::id())->orderBy('name')->get();
         return view('expenses.create', compact('categories'));
     }
 
@@ -56,13 +56,13 @@ class ExpenseController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'amount' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id,user_id,' . Auth::id(),
             'date' => 'required|date',
             'status' => 'required|in:paid,unpaid',
         ]);
 
         // Get category name and set both category_id and category (for backward compatibility)
-        $category = Category::find($validated['category_id']);
+        $category = Category::where('user_id', Auth::id())->findOrFail($validated['category_id']);
         $validated['category'] = $category->name;
         $validated['user_id'] = Auth::id();
 
@@ -78,7 +78,7 @@ class ExpenseController extends Controller
     public function edit(Expense $expense)
     {
         $this->authorizeExpense($expense);
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::where('user_id', Auth::id())->orderBy('name')->get();
         return view('expenses.edit', compact('expense', 'categories'));
     }
 
@@ -93,13 +93,13 @@ class ExpenseController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'amount' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id,user_id,' . Auth::id(),
             'date' => 'required|date',
             'status' => 'required|in:paid,unpaid',
         ]);
 
         // Get category name and set both category_id and category (for backward compatibility)
-        $category = Category::find($validated['category_id']);
+        $category = Category::where('user_id', Auth::id())->findOrFail($validated['category_id']);
         $validated['category'] = $category->name;
 
         $expense->update($validated);

@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('name')->paginate(10);
+        $categories = Category::where('user_id', Auth::id())->orderBy('name')->paginate(10);
         return view('categories.index', compact('categories'));
     }
 
@@ -31,9 +31,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name',
+            'name' => 'required|string|max:255',
             'color' => 'required|string|max:255',
         ]);
+
+        $validated['user_id'] = Auth::id();
 
         Category::create($validated);
 
@@ -46,6 +48,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        if ($category->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
         return view('categories.edit', compact('category'));
     }
 
@@ -54,8 +59,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        if ($category->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
+
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id . ',user_id,' . Auth::id(),
             'color' => 'required|string|max:255',
         ]);
 
@@ -70,6 +79,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
+
         // Check if category has expenses
         if ($category->expenses()->count() > 0) {
             return redirect()->route('categories.index')
@@ -87,7 +100,7 @@ class CategoryController extends Controller
      */
     public function getCategories()
     {
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::where('user_id', Auth::id())->orderBy('name')->get();
         return response()->json($categories);
     }
 }
